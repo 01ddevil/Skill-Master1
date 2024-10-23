@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Master</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #006BFF, #7AB2D3);
+            line-height: 1.6;
+            transition: background-color 0.3s;
+        }
+
+        header {
+            background-color: #7AB2D3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        /* Search Bar Styles */
+        .search-bar {
+            margin: 20px auto;
+            max-width: 600px;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border: 2px solid #006BFF;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #004d40;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #00332d;
+        }
+
+        /* Skill List Styles */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .skill-item {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-item h3 {
+            margin-bottom: 10px;
+            color: #00796b;
+        }
+
+        /* Resource Section Styles */
+        .resources {
+            display: none;
+            padding: 20px;
+            margin: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .resources h2 {
+            color: #004d40;
+            margin-bottom: 10px;
+        }
+
+        .resources ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .resources ul li {
+            margin: 5px 0;
+        }
+
+        .back-link {
+            margin: 20px 0;
+            display: block;
+            text-align: center;
+            color: #00796b;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Skill Master</h1>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for skills...">
+            <button id="search-button"><i class="fas fa-search"></i></button>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <div class="skills" id="skills-container">
+        <div class="skill-item" data-skill="Digital Marketing">
+            <h3>Digital Marketing</h3>
+            <p>Learn how to promote products and services online.</p>
+        </div>
+        <div class="skill-item" data-skill="Data Analysis">
+            <h3>Data Analysis</h3>
+            <p>Transform raw data into actionable insights.</p>
+        </div>
+        <div class="skill-item" data-skill="Project Management">
+            <h3>Project Management</h3>
+            <p>Plan and execute projects effectively.</p>
+        </div>
+        <div class="skill-item" data-skill="Web Development">
+            <h3>Web Development</h3>
+            <p>Build and maintain websites.</p>
+        </div>
+        <div class="skill-item" data-skill="Graphic Design">
+            <h3>Graphic Design</h3>
+            <p>Create visual content using design software.</p>
+        </div>
+        <div class="skill-item" data-skill="Machine Learning">
+            <h3>Machine Learning</h3>
+            <p>Develop algorithms that allow computers to learn.</p>
+        </div>
+        <div class="skill-item" data-skill="Public Speaking">
+            <h3>Public Speaking</h3>
+            <p>Communicate effectively in front of an audience.</p>
+        </div>
+        <div class="skill-item" data-skill="Photography">
+            <h3>Photography</h3>
+            <p>Capture images and edit them professionally.</p>
+        </div>
+        <div class="skill-item" data-skill="Financial Analysis">
+            <h3>Financial Analysis</h3>
+            <p>Analyze financial data to guide decision-making.</p>
+        </div>
+        <div class="skill-item" data-skill="Creative Writing">
+            <h3>Creative Writing</h3>
+            <p>Write engaging and imaginative content.</p>
+        </div>
+        <div class="skill-item" data-skill="Mobile App Development">
+            <h3>Mobile App Development</h3>
+            <p>Design and develop applications for mobile devices.</p>
+        </div>
+        <div class="skill-item" data-skill="UI/UX Design">
+            <h3>UI/UX Design</h3>
+            <p>Create user-friendly interfaces.</p>
+        </div>
+        <div class="skill-item" data-skill="Cybersecurity">
+            <h3>Cybersecurity</h3>
+            <p>Protect systems and networks from cyber threats.</p>
+        </div>
+        <div class="skill-item" data-skill="Cloud Computing">
+            <h3>Cloud Computing</h3>
+            <p>Deliver computing services over the internet.</p>
+        </div>
+        <div class="skill-item" data-skill="Content Writing">
+            <h3>Content Writing</h3>
+            <p>Create engaging written content.</p>
+        </div>
+    </div>
+
+    <!-- Resource Section -->
+    <div class="resources" id="resources-section">
+        <h2 id="resource-title"></h2>
+        <h3>Where did I learn this skill?</h3>
+        <ul id="learn-resources"></ul>
+        <h3>Where did I practice this skill?</h3>
+        <ul id="practice-resources"></ul>
+        <h3>Where did I use this skill?</h3>
+        <ul id="use-resources"></ul>
+        <a href="#" class="back-link" id="back-link">Back to Skills</a>
+    </div>
+
+    <script>
+        const skillsContainer = document.getElementById('skills-container');
+        const resourcesSection = document.getElementById('resources-section');
+        const resourceTitle = document.getElementById('resource-title');
+        const learnResources = document.getElementById('learn-resources');
+        const practiceResources = document.getElementById('practice-resources');
+        const useResources = document.getElementById('use-resources');
+        const backLink = document.getElementById('back-link');
+
+        // Skill click event
+        document.querySelectorAll('.skill-item').forEach(skill => {
+            skill.addEventListener('click', () => {
+                const skillName = skill.getAttribute('data-skill');
+                resourceTitle.innerText = skillName;
+                resourcesSection.style.display = 'block';
+                skillsContainer.style.display = 'none';
+
+                if (skillName === "Digital Marketing") {
+                    learnResources.innerHTML = `
+                        <li><a href="https://www.coursera.org/learn/digital-marketing">Coursera Digital Marketing Course</a></li>
+                        <li><a href="https://www.udemy.com/course/the-complete-digital-marketing-course/">Udemy Digital Marketing Course</a></li>
+                    `;
+                    practiceResources.innerHTML = `
+                        <li><a href="#">Participate in Capture the Flag Events</a></li>
+                        <li><a href="#">Set up a Home Lab for Security Testing</a></li>
+                    `;
+                    useResources.innerHTML = `
+                        <li><a href="#">Cybersecurity Analyst at SecureTech</a></li>
+                        <li><a href="#">Freelance Cybersecurity Consultant</a></li>
+                    `;
+                } else if (skillName === "Cloud Computing") {
+                    learnResources.innerHTML = `
+                        <li><a href="https://www.coursera.org/specializations/cloud-computing">Coursera Cloud Computing Specialization</a></li>
+                        <li><a href="https://www.udacity.com/course/cloud-dev-ops-nanodegree--nd9990">Udacity Cloud DevOps Nanodegree</a></li>
+                    `;
+                    practiceResources.innerHTML = `
+                        <li><a href="#">Build a Personal Cloud Server</a></li>
+                        <li><a href="#">Participate in Cloud Hackathons</a></li>
+                    `;
+                    useResources.innerHTML = `
+                        <li><a href="#">Cloud Engineer at Cloud Solutions Inc.</a></li>
+                        <li><a href="#">Freelance Cloud Consultant</a></li>
+                    `;
+                } else if (skillName === "Content Writing") {
+                    learnResources.innerHTML = `
+                        <li><a href="https://www.udemy.com/course/writing-with-flair-the-best-ways-to-express-your-ideas/">Udemy Content Writing Course</a></li>
+                        <li><a href="https://www.coursera.org/learn/writing-in-the-sciences">Coursera Writing in the Sciences Course</a></li>
+                    `;
+                    practiceResources.innerHTML = `
+                        <li><a href="#">Start a Blog</a></li>
+                        <li><a href="#">Contribute to Online Publications</a></li>
+                    `;
+                    useResources.innerHTML = `
+                        <li><a href="#">Content Writer at XYZ Media</a></li>
+                        <li><a href="#">Freelance Copywriter</a></li>
+                    `;
+                }
+
+                // Hide skills container and show resources section
+                skillsContainer.style.display = 'none';
+                resourcesSection.style.display = 'block';
+            });
+        });
+
+        // Back link event
+        backLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            // Hide resources section and show skills container
+            resourcesSection.style.display = 'none';
+            skillsContainer.style.display = 'flex';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Master - Signup Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #005b96, #ffffff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .sign-in {
+            position: absolute;
+            left: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .sign-up {
+            transform: translateX(100%);
+        }
+
+        .container.active .sign-in {
+            transform: translateX(-100%);
+        }
+
+        .container.active .sign-up {
+            transform: translateX(0);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .social-icons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .social-icons .icon {
+            margin: 0 10px;
+            font-size: 18px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons .icon:hover {
+            color: #005b96;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #005b96;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00447b;
+        }
+
+        a {
+            color: #005b96;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Sign Up Form -->
+        <div class="form-container sign-up">
+            <form id="signup-form">
+                <h1>Create Your Skill Master Account</h1>
+                <div class="social-icons">
+                    <a href="https://accounts.google.com" class="icon" aria-label="Sign up with Google" target="_blank"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://www.facebook.com/login" class="icon" aria-label="Sign up with Facebook" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/login" class="icon" aria-label="Sign up with Twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/login" class="icon" aria-label="Sign up with LinkedIn" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="email" placeholder="Email" required>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" id="show-login">Sign In</a></p>
+            </form>
+        </div>
+
+        <!-- Sign In Form -->
+        <div class="form-container sign-in">
+            <form id="login-form">
+                <h1>Welcome Back to Skill Master</h1>
+                <div class="social-icons">
+                    <a href="https://accounts.google.com" class="icon" aria-label="Sign in with Google" target="_blank"><i class="fa-brands fa-google"></i></a>
+                    <a href="https://www.facebook.com/login" class="icon" aria-label="Sign in with Facebook" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/login" class="icon" aria-label="Sign in with Twitter" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/login" class="icon" aria-label="Sign in with LinkedIn" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email and password</span>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <a href="#">Forgot Your Password?</a>
+                <button type="submit">Sign In</button>
+                <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('show-login').addEventListener('click', function() {
+            document.getElementById('container').classList.remove('active');
+        });
+
+        document.getElementById('show-signup').addEventListener('click', function() {
+            document.getElementById('container').classList.add('active');
+        });
+
+        // Redirect to the home page after form submission
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            window.location.href = 'home.html'; // Change 'home.html' to your actual home page
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            window.location.href = 'home.html'; // Change 'home.html' to your actual home page
+        });
+    </script>
+</body>
+</html>
